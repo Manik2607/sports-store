@@ -54,12 +54,17 @@ const Login = () => {
                         className="w-full border border-gray-300 rounded px-3 py-2"
                     />
                 </div>
-                <button
-                    type="submit"
-                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                >
-                    Login
-                </button>
+                <div className='flex'>
+                    <button
+                        type="submit"
+                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                    >
+                        Login
+                    </button>
+                    <div className="flex-grow">
+                    </div>
+                        <a className='px-8 py-1 text-blue-500' href="/register">Register now</a>
+                </div>
             </form>
             </div>
         </div>

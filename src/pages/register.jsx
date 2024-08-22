@@ -1,5 +1,5 @@
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { auth,db } from '../firebase/firebase';
 import {setDoc, doc} from 'firebase/firestore';
 const Register = () => {
@@ -20,12 +20,22 @@ const Register = () => {
                         email: user.email
                     });
                 }
-                alert(name+'has been registered successfully!!!');
+                window.location.href = '/';
             }
         }catch(error){
             alert('registered Failed!!!\n'+error.message);
         }
     };
+
+    useEffect(() => {
+        const unsubscribe = auth.onAuthStateChanged((user) => {
+            if (user) {
+                console.log(user);
+            }
+        });
+        return unsubscribe;
+        
+    },[]);
 
     return (
         <div className="flex justify-center items-center h-screen">
