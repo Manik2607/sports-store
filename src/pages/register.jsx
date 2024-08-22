@@ -1,18 +1,49 @@
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 import React, { useState } from 'react';
-
+import { auth,db } from '../firebase/firebase';
+import {setDoc, doc} from 'firebase/firestore';
 const Register = () => {
+    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
-    const handleRegister = () => {
-        // Add your registration logic here
+    const handleRegister = async (e)=> {
+        e.preventDefault();
+        try{
+            if(password === confirmPassword){
+                await createUserWithEmailAndPassword(auth, email, password);
+                const user = auth.currentUser;
+                if(user){
+                    await setDoc(doc(db, 'users', user.uid), {
+                        name: name,
+                        email: user.email
+                    });
+                }
+                alert(name+'has been registered successfully!!!');
+            }
+        }catch(error){
+            alert('registered Failed!!!\n'+error.message);
+        }
     };
 
     return (
         <div className="flex justify-center items-center h-screen">
             <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-96">
                 <h2 className="text-2xl font-bold mb-6">Register</h2>
+                <div className="mb-4">
+                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="Name">
+                        Name
+                    </label>
+                    <input
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        id="name"
+                        type="name"
+                        placeholder="Enter your name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                    />
+                </div>
                 <div className="mb-4">
                     <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
                         Email
