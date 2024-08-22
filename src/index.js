@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import Login from './pages/login';
 import Register from './pages/register';
+import Main from './pages/main';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
@@ -14,7 +15,7 @@ root.render(
       <Switch>
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
-        <Route path="/" component={App} />
+        <Route path="/" component={Main} />
       </Switch>
     </Router>
   </React.StrictMode>

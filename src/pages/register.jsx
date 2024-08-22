@@ -2,6 +2,7 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { auth,db } from '../firebase/firebase';
 import {setDoc, doc} from 'firebase/firestore';
+
 const Register = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -21,6 +22,8 @@ const Register = () => {
                     });
                 }
                 window.location.href = '/';
+            }else{
+                alert("Password doesn't match\nPlease try again.");
             }
         }catch(error){
             alert('registered Failed!!!\n'+error.message);
