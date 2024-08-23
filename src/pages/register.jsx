@@ -1,5 +1,5 @@
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { auth,db } from '../firebase/firebase';
 import {setDoc, doc} from 'firebase/firestore';
 
@@ -30,15 +30,6 @@ const Register = () => {
         }
     };
 
-    useEffect(() => {
-        const unsubscribe = auth.onAuthStateChanged((user) => {
-            if (user) {
-                console.log(user);
-            }
-        });
-        return unsubscribe;
-        
-    },[]);
 
     return (
         <div className="flex justify-center items-center h-screen">
