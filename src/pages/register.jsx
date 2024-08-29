@@ -2,7 +2,6 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 import React, { useState } from 'react';
 import { auth,db } from '../firebase/firebase';
 import {setDoc, doc} from 'firebase/firestore';
-
 const Register = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -95,6 +94,7 @@ const Register = () => {
                     >
                         Register
                     </button>
+                    <a className='px-8 py-1 text-blue-500' href="/login">Login </a>
                 </div>
             </div>
         </div>

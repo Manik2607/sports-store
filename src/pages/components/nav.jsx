@@ -34,10 +34,11 @@ export default function Nav(){
             <div className="flex px-28">
                 <h1 className="text-3xl text-white font-bold py-5">SportCart</h1>
                 <div className="w-full"></div>
-                <div className="flex flex-row">
-                    {userDetails && <img src={CartIcon} alt="cart" className="w-7 h-7 m-auto"/>}
-                    {userDetails && <h1 className="text-white min-w-40 text-xl my-5 px-4 py-2 rounded ml-4">{userDetails.name}</h1>}
+                <div className="flex flex-row w-fit px-16">
+                    {userDetails && <img src={CartIcon} alt="cart" className="w-7 h-7 my-auto"/>}
+                    {userDetails && <h1 className="text-white min-w-40 text-xl my-5 px-4 py-2 rounded">{userDetails.name}</h1>}
                     {userDetails && <button className="bg-red-500 text-white my-5 px-4 py-2 rounded ml-4" onClick={logout} >logout</button>}
+                    {!userDetails && <button className="bg-green-500 text-white my-5 px-4 py-2 rounded ml-4" onClick={()=>window.location.href = "/login"} >login</button>}
                     
                 </div>
             </div>
