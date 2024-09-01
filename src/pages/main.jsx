@@ -4,6 +4,7 @@ import { auth } from "../firebase/firebase";
 import { getDoc, doc } from "firebase/firestore";
 import { db } from "../firebase/firebase";
 import Item from "./components/item";
+import Home from "./home";
 const logout = () => {
   auth.signOut().then(() => {
     window.location.href = "/login";
@@ -35,6 +36,7 @@ export default function Main() {
         
     <div className="flex flex-col min-h-screen">
 
+      <Home></Home>
 
       <main className="px-32 bg-slate-100 ">
         {/* {userDetails && <h1>Hi, {userDetails.name} you are logged in.</h1>}
@@ -65,7 +67,7 @@ export default function Main() {
       </main>
 
       <footer className="bg-gray-300 p-4">
-        <p className="text-center">© 2022 SportCart. All rights reserved.</p>
+        <p className="text-center">© 2024 SportCart. All rights reserved.</p>
       </footer>
     </div>
   );
